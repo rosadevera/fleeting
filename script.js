@@ -19,7 +19,12 @@ $(document).ready(function() {
                 { from: 6, to: 7, hidden: true }
             ]),
             sourceText: "Open Water by Caleb Azumah Nelson (2021)",
-            backgroundImage: "url('./media/front.png')"
+            backgroundImage: "url('./media/front.png')",
+            edgeOptions: {
+                color: 'white', // Normal lines
+                width: 1.5,
+                dashes: false, // No dashes
+            }
         },
         quote2: {
             nodes: new vis.DataSet([
@@ -42,21 +47,25 @@ $(document).ready(function() {
                 { from: 7, to: 8, hidden: true }
             ]),
             sourceText: "Open Water by Caleb Azumah Nelson (2021)",
-            backgroundImage: "url('./media/2scan.png')"
+            backgroundImage: "url('./media/2scan.png')",
+            edgeOptions: {
+                color: 'white', // Normal lines
+                width: 1.5,
+                dashes: false, // No dashes
+            }
         },
         quote3: {
             nodes: new vis.DataSet([
                 { id: 1, label: 'She gave me', hidden: false, color: { background: "transparent", border: "white", highlight: { border: "white", background: "white" } } },
-                { id: 2, label: 'a puzzle', hidden: true, color: { background: "transparent", border: "white", highlight: { border: "white", background: "white" } } },
-                { id: 3, label: 'in a box.', hidden: true, color: { background: "transparent", border: "white", highlight: { border: "white", background: "white" } } },
-                { id: 4, label: 'She put the pieces', hidden: true, color: { background: "transparent", border: "white", highlight: { border: "white", background: "white" } } },
-                { id: 5, label: 'together', hidden: true, color: { background: "transparent", border: "white", highlight: { border: "white", background: "white" } } },
-                { id: 6, label: 'patiently,', hidden: true, color: { background: "transparent", border: "white", highlight: { border: "white", background: "white" } } },
-                { id: 7, label: 'one', hidden: true, color: { background: "transparent", border: "white", highlight: { border: "white", background: "white" } } },
-                { id: 8, label: 'by', hidden: true, color: { background: "transparent", border: "white", highlight: { border: "white", background: "white" } } },
-                { id: 9, label: 'one', hidden: true, color: { background: "transparent", border: "white", highlight: { border: "white", background: "white" } } },
-                { id: 10, label: 'and completed', hidden: true, color: { background: "transparent", border: "white", highlight: { border: "white", background: "white" } } },
-                { id: 11, label: 'the picture of me.', hidden: true, color: { background: "transparent", border: "white", highlight: { border: "white", background: "white" } } }
+                { id: 2, label: 'a puzzle.', hidden: true, color: { background: "transparent", border: "white", highlight: { border: "white", background: "white" } } },
+                { id: 3, label: 'She put the pieces', hidden: true, color: { background: "transparent", border: "white", highlight: { border: "white", background: "white" } } },
+                { id: 4, label: 'together', hidden: true, color: { background: "transparent", border: "white", highlight: { border: "white", background: "white" } } },
+                { id: 5, label: 'patiently,', hidden: true, color: { background: "transparent", border: "white", highlight: { border: "white", background: "white" } } },
+                { id: 6, label: 'one', hidden: true, color: { background: "transparent", border: "white", highlight: { border: "white", background: "white" } } },
+                { id: 7, label: 'by', hidden: true, color: { background: "transparent", border: "white", highlight: { border: "white", background: "white" } } },
+                { id: 8, label: 'one', hidden: true, color: { background: "transparent", border: "white", highlight: { border: "white", background: "white" } } },
+                { id: 9, label: 'and completed', hidden: true, color: { background: "transparent", border: "white", highlight: { border: "white", background: "white" } } },
+                { id: 10, label: 'the picture of me.', hidden: true, color: { background: "transparent", border: "white", highlight: { border: "white", background: "white" } } }
             ]),
             edges: new vis.DataSet([
                 { from: 1, to: 2, hidden: true },
@@ -67,10 +76,15 @@ $(document).ready(function() {
                 { from: 6, to: 7, hidden: true },
                 { from: 7, to: 8, hidden: true },
                 { from: 8, to: 9, hidden: true },
-                { from: 10, to: 11, hidden: true }
+                { from: 9, to: 10, hidden: true }
             ]),
             sourceText: "Notes of a Crocodile by Qiu Miaojin (1994)",
-            backgroundImage: "url('./media/3rip1.png')"
+            backgroundImage: "url('./media/3rip1.png')",
+            edgeOptions: {
+                color: 'transparent', // Transparent edges (no visible lines)
+                width: 0,
+                dashes: false,
+            }
         },
         quote4: {
             nodes: new vis.DataSet([
@@ -89,7 +103,12 @@ $(document).ready(function() {
                 { from: 5, to: 6, hidden: true },
             ]),
             sourceText: "Diary of an Oxygen Thief by Anonymous (2006)",
-            backgroundImage: "url('./media/red.png')"
+            backgroundImage: "url('./media/red.png')",
+            edgeOptions: {
+                color: 'white', // Normal lines
+                width: 1.5,
+                dashes: false, // No dashes
+            }
         },
         quote5: {
             nodes: new vis.DataSet([
@@ -110,7 +129,12 @@ $(document).ready(function() {
                 { from: 6, to: 7, hidden: true }
             ]),
             sourceText: "Love Is a Mix Tape: Life and Loss, One Song at a Time by Rob Sheffield (2007)",
-            backgroundImage: "url('./media/9scan.png')"
+            backgroundImage: "url('./media/9scan.png')",
+            edgeOptions: {
+                color: 'white',
+                width: 1.5,
+                dashes: [10, 5], // Custom dashed lines
+            }
         },
     };
 
@@ -119,12 +143,6 @@ $(document).ready(function() {
     let edges = networks.quote1.edges;
     let network_data = { nodes: nodes, edges: edges };
     let network_options = {
-        edges: {
-            width: 1.5,
-            selectionWidth: 0,
-            hoverWidth: 0,
-            color: 'white',
-        },
         nodes: {
             shape: "dot",
             size: 10,
@@ -224,7 +242,13 @@ $(document).ready(function() {
         let selectedNetwork = networks[quoteId];
         nodes = selectedNetwork.nodes;
         edges = selectedNetwork.edges;
-        network.setData({ nodes: nodes, edges: edges }); // Applies the edge styles
+    
+        // Apply edge styles from edgeOptions
+        network.setData({ nodes: nodes, edges: edges });
+        network.setOptions({
+            edges: selectedNetwork.edgeOptions
+        });
+    
         document.querySelector('.background').style.backgroundImage = selectedNetwork.backgroundImage;
         document.getElementById('source').innerText = selectedNetwork.sourceText;
         currentNodeId = 1;
@@ -254,10 +278,9 @@ $(document).ready(function() {
 
     function revealNode(nodeId) {
         const node = nodes.get(nodeId);
-        nodes.update({ id: nodeId, hidden: false, color: { background: "white", border: "white" } }); // Full white background
+        nodes.update({ id: nodeId, hidden: false, color: { background: "white", border: "white" } });
         if (nodeId > 1) {
-            edges.update({ from: nodeId - 1, to: nodeId, hidden: false }); // Reveal the edge
-            // Set previous node to fully white
+            edges.update({ from: nodeId - 1, to: nodeId, hidden: false });
             nodes.update({ id: nodeId - 1, color: { background: "white", border: "white" } });
         }
     }
