@@ -1,0 +1,154 @@
+@font-face {
+    font-family: AlteHaas-regular;
+    src: url(AlteHaasGroteskRegular.ttf);
+}
+
+body {
+    margin: 0;
+    overflow: hidden;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.background {
+    position: absolute;
+    margin: auto;
+    width: 120%;
+    height: 120%;
+    background-image: url('./media/front.png');
+    background-size: cover;
+    background-position: center;
+    filter: blur(15px);
+    z-index: -1;
+    transition: filter 0.5s ease-in-out, background-image 0.5s ease-in-out;
+}
+
+.background::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: inherit;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.background:hover::before {
+    opacity: 1;
+}
+
+.quotes {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    display:flex;
+    flex-direction: column;
+    cursor: pointer;
+    gap: 15px;
+    z-index: 999;
+}
+
+#quote1 {
+    background-color: orange;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    transition: 0.25s ease-in-out;
+}
+
+#quote2 {
+    background-color: lightskyblue;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    transition: 0.25s ease-in-out;
+}
+
+#quote3 {
+    background-color:hotpink;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    transition: 0.25s ease-in-out;
+}
+
+#quote4 {
+    background-color: rgb(121, 167, 113);
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    transition: 0.25s ease-in-out;
+}
+
+#quote5 {
+    background-color: yellow;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    transition: 0.25s ease-in-out;
+}
+
+#quote1:hover, #quote2:hover, #quote3:hover, #quote4:hover, #quote5:hover {
+    transform: translatex(10px); 
+}
+
+#source {
+    position: fixed;
+    bottom: 15px;
+    left: 20px;
+    font-family: "AlteHaas-regular";
+    color: white;
+    font-size: 0.75rem;
+    opacity: 0.5;
+}
+
+p {
+    font-family: "AlteHaas-regular";
+    color: white;
+    size: 10px;
+}
+
+#network {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    font-family: "AlteHaas-regular";
+    transition: filter 0.5s ease-in-out;
+    animation: floating3 4s ease-in-out infinite alternate;
+}
+
+@keyframes floating3 {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(-20px); 
+    }
+}
+
+.vis-node {
+    transition: background-color 0.3s ease-in-out, border-color 0.3s ease;
+}
+
+.vis-network .vis-node {
+    transition: opacity 0.6s ease-in-out;
+}
+
+
+@keyframes fadeInAnimation {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+     }
+}
