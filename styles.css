@@ -20,7 +20,7 @@ body {
     background-image: url('./media/front.png');
     background-size: cover;
     background-position: center;
-    filter: blur(15px);
+    filter: blur(10px);
     z-index: -1;
     transition: filter 0.5s ease-in-out, background-image 0.5s ease-in-out;
 }
@@ -50,7 +50,7 @@ body {
     display:flex;
     flex-direction: column;
     cursor: pointer;
-    gap: 15px;
+    gap: 20px;
     z-index: 999;
 }
 
@@ -63,7 +63,7 @@ body {
 }
 
 #quote2 {
-    background-color: lightskyblue;
+    background-color: rgb(144, 199, 93);
     width: 20px;
     height: 20px;
     border-radius: 50%;
@@ -71,7 +71,7 @@ body {
 }
 
 #quote3 {
-    background-color:hotpink;
+    background-color:rgb(252, 134, 193);
     width: 20px;
     height: 20px;
     border-radius: 50%;
@@ -79,7 +79,7 @@ body {
 }
 
 #quote4 {
-    background-color: rgb(121, 167, 113);
+    background-color: rgb(181, 60, 60);
     width: 20px;
     height: 20px;
     border-radius: 50%;
@@ -87,7 +87,7 @@ body {
 }
 
 #quote5 {
-    background-color: yellow;
+    background-color: rgb(252, 229, 24);
     width: 20px;
     height: 20px;
     border-radius: 50%;
@@ -95,7 +95,7 @@ body {
 }
 
 #quote1:hover, #quote2:hover, #quote3:hover, #quote4:hover, #quote5:hover {
-    transform: translatex(10px); 
+    transform: translatex(7px); 
 }
 
 #source {

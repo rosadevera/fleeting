@@ -33,8 +33,8 @@ $(document).ready(function() {
                 { id: 8, label: 'in itself', hidden: true, color: { background: "transparent", border: "white" } }
             ]),
             edges: new vis.DataSet([
-                { from: 1, to: 2, hidden: true },
-                { from: 2, to: 3, hidden: true },
+                { from: 1, to: 2, hidden: true, dashes: [5, 5], smooth: { type: 'discrete' } },
+                { from: 2, to: 3, hidden: true, dashes: [5, 5], smooth: { type: 'discrete' } },
                 { from: 3, to: 4, hidden: true },
                 { from: 4, to: 5, hidden: true },
                 { from: 5, to: 6, hidden: true },
@@ -42,7 +42,7 @@ $(document).ready(function() {
                 { from: 7, to: 8, hidden: true }
             ]),
             sourceText: "Open Water by Caleb Azumah Nelson (2021)",
-            backgroundImage: "url('./media/2.jpg')"
+            backgroundImage: "url('./media/2scan.png')"
         },
         quote3: {
             nodes: new vis.DataSet([
@@ -51,7 +51,7 @@ $(document).ready(function() {
                 { id: 3, label: 'in a box.', hidden: true, color: { background: "transparent", border: "white", highlight: { border: "white", background: "white" } } },
                 { id: 4, label: 'She put the pieces', hidden: true, color: { background: "transparent", border: "white", highlight: { border: "white", background: "white" } } },
                 { id: 5, label: 'together', hidden: true, color: { background: "transparent", border: "white", highlight: { border: "white", background: "white" } } },
-                { id: 6, label: 'patiently]', hidden: true, color: { background: "transparent", border: "white", highlight: { border: "white", background: "white" } } },
+                { id: 6, label: 'patiently,', hidden: true, color: { background: "transparent", border: "white", highlight: { border: "white", background: "white" } } },
                 { id: 7, label: 'one', hidden: true, color: { background: "transparent", border: "white", highlight: { border: "white", background: "white" } } },
                 { id: 8, label: 'by', hidden: true, color: { background: "transparent", border: "white", highlight: { border: "white", background: "white" } } },
                 { id: 9, label: 'one', hidden: true, color: { background: "transparent", border: "white", highlight: { border: "white", background: "white" } } },
@@ -70,7 +70,7 @@ $(document).ready(function() {
                 { from: 10, to: 11, hidden: true }
             ]),
             sourceText: "Notes of a Crocodile by Qiu Miaojin (1994)",
-            backgroundImage: "url('./media/3.jpg')"
+            backgroundImage: "url('./media/3rip1.png')"
         },
         quote4: {
             nodes: new vis.DataSet([
@@ -89,7 +89,28 @@ $(document).ready(function() {
                 { from: 5, to: 6, hidden: true },
             ]),
             sourceText: "Diary of an Oxygen Thief by Anonymous (2006)",
-            backgroundImage: "url('./media/4.jpg')"
+            backgroundImage: "url('./media/red.png')"
+        },
+        quote5: {
+            nodes: new vis.DataSet([
+                { id: 1, label: 'Nothing connects', hidden: false, color: { background: "transparent", border: "white" } },
+                { id: 2, label: 'to the moment', hidden: true, color: { background: "transparent", border: "white" } },
+                { id: 3, label: 'like music.', hidden: true, color: { background: "transparent", border: "white" } },
+                { id: 4, label: 'I count the music', hidden: true, color: { background: "transparent", border: "white" } },
+                { id: 5, label: 'to bring me back', hidden: true, color: { background: "transparent", border: "" } },
+                { id: 6, label: 'or more precisely', hidden: true, color: { background: "transparent", border: "white" } },
+                { id: 7, label: 'to bring her forward.', hidden: true, color: { background: "transparent", border: "white" } }
+            ]),
+            edges: new vis.DataSet([
+                { from: 1, to: 2, hidden: true },
+                { from: 2, to: 3, hidden: true },
+                { from: 3, to: 4, hidden: true },
+                { from: 4, to: 5, hidden: true },
+                { from: 5, to: 6, hidden: true },
+                { from: 6, to: 7, hidden: true }
+            ]),
+            sourceText: "Love Is a Mix Tape: Life and Loss, One Song at a Time by Rob Sheffield (2007)",
+            backgroundImage: "url('./media/9scan.png')"
         },
     };
 
@@ -114,8 +135,8 @@ $(document).ready(function() {
             color: {
                 border: "white",
                 background: "rgba(255,255,255,0)", 
-                hover: { border: "white", background: "rgba(255,255,255,0)" }, // Hover state with no fill initially
-                highlight: { border: "white", background: "white" }, // Full white when selected
+                hover: { border: "white", background: "rgba(255,255,255,0)" },
+                highlight: { border: "white", background: "white" },
             },
             font: {
                 face: "'AlteHaas-regular'", 
@@ -193,16 +214,21 @@ $(document).ready(function() {
         function() { revertBackground(); }
     );
 
+    $('#quote5').hover(
+        function() { updateBackgroundOnHover('quote5'); },
+        function() { revertBackground(); }
+    );
+
     // Function to update the network and background image on click
     function updateNetwork(quoteId) {
         let selectedNetwork = networks[quoteId];
         nodes = selectedNetwork.nodes;
         edges = selectedNetwork.edges;
-        network.setData({ nodes: nodes, edges: edges });
-        document.querySelector('.background').style.backgroundImage = selectedNetwork.backgroundImage; // Update background image
+        network.setData({ nodes: nodes, edges: edges }); // Applies the edge styles
+        document.querySelector('.background').style.backgroundImage = selectedNetwork.backgroundImage;
         document.getElementById('source').innerText = selectedNetwork.sourceText;
         currentNodeId = 1;
-        currentQuoteId = quoteId; // Update the currently selected quote
+        currentQuoteId = quoteId;
         resetNetwork();
     }
 
@@ -220,6 +246,10 @@ $(document).ready(function() {
 
     $('#quote4').on('click', function() {
         updateNetwork('quote4');
+    });
+
+    $('#quote5').on('click', function() {
+        updateNetwork('quote5');
     });
 
     function revealNode(nodeId) {
