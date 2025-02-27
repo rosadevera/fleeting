@@ -155,7 +155,7 @@ $(document).ready(function() {
     let network = new vis.Network(network_div, network_data, network_options);
     let currentNodeId = 1;
     let inactivityTimer;
-    const inactivityDuration = 7000; 
+    const inactivityDuration = 10000; 
 
     // Track the currently selected quote
     let currentQuoteId = 'quote1';
